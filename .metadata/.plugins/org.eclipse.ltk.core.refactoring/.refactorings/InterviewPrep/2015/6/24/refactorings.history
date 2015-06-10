@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;arrays_and_strings&apos; to &apos;chapter1_arrays_and_strings&apos;&#x0D;&#x0A;- Original project: &apos;InterviewPrep&apos;&#x0D;&#x0A;- Original element: &apos;InterviewPrep/src/arrays_and_strings&apos;&#x0D;&#x0A;- Renamed element: &apos;InterviewPrep/src/chapter1_arrays_and_strings&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;arrays_and_strings&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;arrays_and_strings" name="chapter1_arrays_and_strings" qualified="false" references="true" stamp="1433904859449" textual="false" version="1.0"/>
+</session>
