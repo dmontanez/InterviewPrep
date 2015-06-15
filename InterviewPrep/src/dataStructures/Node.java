@@ -1,4 +1,4 @@
-package chapter2_linked_lists;
+package dataStructures;
 
 public class Node {
 	public int data;
@@ -17,4 +17,10 @@ public class Node {
 		n.next = end;
 	}
 	
+	public void appendToHead(int d) {
+		Node node = new Node(this.data);
+		node.next = this.next;
+		this.data = d;
+		this.next = node;
+	}
 }

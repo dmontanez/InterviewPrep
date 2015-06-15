@@ -1,5 +1,6 @@
 import chapter1_arrays_and_strings.*;
 import chapter2_linked_lists.*;
+import dataStructures.Node;
 
 public class Main {
 
@@ -8,30 +9,27 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Node n = new Node(0);
-		for(int i = 1; i < 10; i++) {
-			n.appendToTail(i%2);
-		}
 		
-		Node printNode = n;
+		int[] num1 = new int[4];
+		int[] num2 = new int[3];
 		
-		while(printNode!=null) {
-			System.out.print(printNode.data);
-			printNode = printNode.next;
-		}
+		num1[0] = 1;
+		num1[1] = 2;
+		num1[2] = 3;
+		num1[3] = 4;
+		num2[0] = 5;
+		num2[1] = 6;
+		num2[2] = 7;
+		
+		Question2_5_2 myList = new Question2_5_2(num1, num2);
+		
+		myList.printList(myList.n1);
+		myList.printList(myList.n2);
 		
 		System.out.println();
-		System.out.println("Running Function...");
 		
-		Question2_1 checkQuestion = new Question2_1(n);
-		printNode = checkQuestion.removeDuplicates();
-		
-		System.out.println("Function done running!");
-		
-		while(printNode!=null) {
-			System.out.print(printNode.data);
-			printNode = printNode.next;
-		}
+		myList.printList(myList.addListProper());
+		System.out.println();
 	}
 
 }
