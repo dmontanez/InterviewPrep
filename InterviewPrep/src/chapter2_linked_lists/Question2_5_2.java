@@ -25,6 +25,11 @@ public class Question2_5_2 {
 		}
 	}
 	
+	class PartSum {
+		Node partSum = null;
+		int carry = 0;
+	}
+	
 	public Node addListReverse() {
 		Node sum = null;
 		int keep;
@@ -59,14 +64,15 @@ public class Question2_5_2 {
 		} else {
 			padList(n2, length(n1) - length(n2));
 		}
-		n1 = reverse(n1);
-		n2 = reverse(n2);
-		System.out.println("REVERSED");
-		printList(n1);
-		printList(n2);
+		//n1 = reverse(n1);
+		//n2 = reverse(n2);
+		
 		if(n1 == null && n2 != null) return n2;
 		if(n1 != null && n2 == null) return n1;
-		Node sum = null;
+		
+		PartSum sum = addListProperHelper(n1, n2);
+		
+		/*
 		int keep;
 		int carry = 0;
 		while(n1 != null || n2 != null) {
@@ -80,11 +86,38 @@ public class Question2_5_2 {
 			} else {
 				sum.appendToHead(keep);
 			}
-			System.out.println("PASS");
+
 			if(n1 != null) n1 = n1.next;
 			if(n2 != null) n2 = n2.next;
 		}
+		
 		if(carry > 0) sum.appendToHead(carry);
+		 */
+		
+		if(sum.carry > 0) sum.partSum.appendToHead(sum.carry);
+		return sum.partSum;
+	}
+	
+	public PartSum addListProperHelper(Node n1, Node n2) {
+		if(n1 == null && n2 == null){
+			PartSum sum = new PartSum();
+			return sum;
+		}
+		
+		PartSum sum = addListProperHelper(n1.next, n2.next);
+		
+		int val = sum.carry + n1.data + n2.data;
+		int keep = val % 10;
+		int carry = (val - keep) / 10;
+		
+		if(sum.partSum == null) {
+			sum.partSum = new Node(keep);
+		} else {
+			sum.partSum.appendToHead(keep);
+		}
+		
+		sum.carry = carry;
+		
 		return sum;
 	}
 	
