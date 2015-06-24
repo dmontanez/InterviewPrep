@@ -6,30 +6,31 @@ public class Question2_2 {
 /*
  * Implement a function to find the kth to last element of a singly linked list.
  */
+	
 	Node n;
 	
-	public Question2_2(int len) {
-		n = new Node(0);
-		for(int i = 1; i < len; i++) {
-			n.appendToTail(i);
+	public Question2_2(int[] num) {
+		n = new Node(num[0]);
+		for(int i = 1; i < num.length; i++) {
+			Node aNode = new Node(num[i]);
+			n.appendToTail(aNode);
 		}
 	}
 	
-	public Node getKthNode (int k) {
-		Node frontRunner, tailRunner;
-		frontRunner = n;
-		tailRunner = n;
+	public int kthToLast(int k) {
+		if(n == null || n.next == null) return n.data;
+		Node frontRunner = n;
+		Node tailRunner = n;
 		
-		for(int i = 1; i < k; i++) {
+		for(int i = 0; i < k; i++) {
 			frontRunner = frontRunner.next;
 		}
 		
-		while(frontRunner.next != null) {
-			frontRunner = frontRunner.next;
+		while(frontRunner != null) {
 			tailRunner = tailRunner.next;
+			frontRunner =frontRunner.next;
 		}
-		
-		return tailRunner;
+		return tailRunner.data;
 	}
 	
 }

@@ -8,8 +8,9 @@ public class Node {
 		this.data = d;
 	}
 	
-	public void appendToTail(int d) {
-		Node end = new Node(d);
+	public Node() {};
+	
+	public void appendToTail(Node end) {
 		Node n = this;
 		while (n.next != null) {
 			n = n.next;
@@ -17,10 +18,18 @@ public class Node {
 		n.next = end;
 	}
 	
-	public void appendToHead(int d) {
+	public void appendToHead(Node start) {
 		Node node = new Node(this.data);
 		node.next = this.next;
-		this.data = d;
+		this.data = start.data;
 		this.next = node;
+	}
+	
+	public void print() {
+		Node n = this;
+		while(n != null) {
+			System.out.print(n.data);
+			n = n.next;
+		}
 	}
 }
