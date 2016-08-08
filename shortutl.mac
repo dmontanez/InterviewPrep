@@ -1,0 +1,82 @@
+!----- Caution: ---------------------------------------------------------
+! Macros contained in this macro file should not call printing commands. 
+! Macro names must not be a duplicate of any macro delivered with the
+! Agilent ChemStation.
+! It is recommended to keep this macro file in \CHEM32\REPSTYLE\
+!------------------------------------------------------------------------
+
+!********************
+name USR_sortedby$ !*
+!********************
+  SortedBy = TabHdrVal(_DaMethod[1], "RptParm", "SortedBy")
+  if SortedBy = 0 then
+    return "RT"
+  else
+    return "Signal"
+  endif
+endmacro
+
+!*************************
+name USR_SortedBySignal !*
+!*************************
+  parameter SignalIndex
+
+  return TabHdrVal(_DaMethod[1], "RptParm", "SortedBy")
+endmacro
+
+!*********************************
+name USR_SortedBySigAndSigFound !*
+!*********************************
+  parameter SignalIndex
+
+  if (RowByVal(ChromRes[1],Signal,,"CalSignal","=",SignalIndex) < 1)
+    return 0
+  else
+    return TabHdrVal(_DaMethod[1], "RptParm", "SortedBy")
+  endif
+endmacro
+
+!**************************
+name USR_SortedByRetTime !*
+!**************************
+  parameter SignalIndex
+
+  if (TabHdrVal(_DaMethod[1], "RptParm", "SortedBy")=0)
+    return 1
+  else
+    return 0
+  endif
+endmacro
+
+!*******************
+name USR_CurIndex !*
+!*******************
+parameter Index
+  
+  return Index
+endmacro
+
+!*************************
+name USR_CalcPerfNoise$
+!*************************
+
+  if (Check(MACRO,evaluatePerformance) = 0)
+	macro "report.mcx"
+  endif
+ 
+  evalperf 
+  evalperf ,1
+  CalcNoise
+  return ""	
+endmacro
+
+!*************************
+name USR_CalcPerfShort$
+!*************************
+
+  if (Check(MACRO,evaluatePerformance) = 0)
+	macro "report.mcx"
+  endif
+  evalperf  ,1
+  return ""	
+endmacro
